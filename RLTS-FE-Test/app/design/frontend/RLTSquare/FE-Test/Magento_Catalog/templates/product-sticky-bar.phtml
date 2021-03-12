@@ -1,0 +1,42 @@
+<?php
+/** @var $block \RLTSquare\StickyBar\Block\StickyBar */
+
+$product = $block->getCurrentProduct();//get current product
+$abstractProductBlock = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\AbstractProduct');
+$price = $abstractProductBlock->getProductPrice($product);
+$addToCartUrl =  $block->getListBlock()->getAddToCartUrl($product);
+$_helper = $this->helper(Magento\Catalog\Helper\Output::class);
+?>
+
+<?php $image_url = $block->getImageHelper()->init($product, 'product_thumbnail_image')->setImageFile($product->getFile())->getUrl(); ?>
+
+<div class="product-sticky-wrapper">
+    <div class="product-content">
+        <div class="product-info-wrapper">
+            <div class="product-info-left">
+                <div class="product-image"><img src="<?php echo $image_url; ?>"></div>
+                <div class="content-wrapper">
+                    <div class="product-name"><?php echo $product->getName(); ?></div>
+                    <div class="sticky-product-content">
+                        <?php echo $block->getLayout()
+                            ->createBlock('Magento\Cms\Block\Block')
+                            ->setBlockId('sticky-product-content')
+                            ->toHtml();
+                        ?>
+                    </div>
+                </div>
+            </div>
+            <div class="product-info-right">
+                <div class="product-price"><?php echo $price ?></div>
+                <div class="product-addto-cart">
+                    <form data-role="tocart-form" action="<?php echo $addToCartUrl; ?>" method="post">
+                        <?php echo $block->getBlockHtml('formkey')?>
+                        <button type="submit" title="Add to Cart" class="action tocart primary">
+                            <span><?= __('Add to Cart') ?></span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

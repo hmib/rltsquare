@@ -1,0 +1,17 @@
+<root>
+   <pages>
+      <cms_item>
+         <title>Widget cms Page</title>
+         <identifier>widget-cms-page</identifier>
+         <content><![CDATA[<div class="custom-widget-wrapper">{{block class="Magento\\Cms\\Block\\Block" block_id="block-widget-one"}} {{block class="Magento\\Cms\\Block\\Block" block_id="block-widget-two"}}</div>
+<div class="product-list-wrapper">
+<h2>Product LIst</h2>
+{{widget type="Magento\CatalogWidget\Block\Product\ProductsList" show_pager="0" products_count="5" template="Magento_CatalogWidget::product/widget/content/grid.phtml" conditions_encoded="^[`1`:^[`type`:`Magento||CatalogWidget||Model||Rule||Condition||Combine`,`aggregator`:`all`,`value`:`1`,`new_child`:``^],`1--1`:^[`type`:`Magento||CatalogWidget||Model||Rule||Condition||Product`,`attribute`:`category_ids`,`operator`:`==`,`value`:`3`^]^]"}}</div>
+]]></content>
+         <is_active>1</is_active>
+         <page_layout>1column</page_layout>
+         <layout_update_xml><![CDATA[]]></layout_update_xml>
+      </cms_item>
+   </pages>
+</root>
+
